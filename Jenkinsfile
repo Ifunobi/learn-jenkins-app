@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:23-alpine'
+                    image 'node:23-bullseye' // Use a Debian-based image with OpenSSL 1.1
                     reuseNode true
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
                     set -euo pipefail
 
                     # Install dependencies
-                    npm install
+                    npm ci
 
                     # Build the project
                     npm run build
