@@ -31,6 +31,30 @@ pipeline {
                     npm run build
                 '''
             }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:23-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    #!/usr/bin/env bash
+                    set -euo pipefail
+
+                    ls -la
+                    # Print the current working directory
+                    pwd
+                    # Print the Node.js version
+                    node -v
+                    # Print the npm version
+                    npm -v
+
+                    # Run tests
+                    npm test
+                '''
+            }
         }
     }
 }
