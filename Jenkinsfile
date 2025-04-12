@@ -2,14 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Without Docker') {
-            steps {
-                cleanWs()
-                echo '"Without Docker"'
-            }
-        }
-        
-        stage('With Docker') {
+        stage('Build') {
             agent {
                 docker {
                     image 'node:23-alpine'
@@ -17,9 +10,22 @@ pipeline {
                 }
             }
             steps {
-                echo '"With Docker"'
                 sh '''
-                npm --version
+                    ls -la
+                    # Print the current working directory
+                    pwd
+                    # Print the Node.js version
+                    node -v
+                    # Print the npm version
+                    npm -v
+                    #!/usr/bin/env bash
+                    set -euo pipefail
+
+                    # Install dependencies
+                    npm ci
+
+                    # Build the project
+                    npm run build
                 '''
             }
         }
