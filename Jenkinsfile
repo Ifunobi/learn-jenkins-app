@@ -20,7 +20,6 @@ pipeline {
                 echo '"With Docker"'
                 sh '''
                 npm --version
-                npm start
                 '''
             }
         }
