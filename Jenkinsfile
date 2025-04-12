@@ -13,7 +13,6 @@ pipeline {
                 NODE_OPTIONS = '--openssl-legacy-provider'
             }
             steps {
-                cleanWs()
                 sh '''
                     ls -la
                     # Print the current working directory
