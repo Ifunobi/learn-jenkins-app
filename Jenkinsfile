@@ -5,9 +5,12 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:23-buster' // Use a Debian-based image with OpenSSL 1.1
+                    image 'node:23-alpine'
                     reuseNode true
                 }
+            }
+            environment {
+                NODE_OPTIONS = '--openssl-legacy-provider'
             }
             steps {
                 cleanWs()
