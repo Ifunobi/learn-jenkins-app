@@ -5,11 +5,12 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:23-bullseye' // Use a Debian-based image with OpenSSL 1.1
+                    image 'node:23-buster' // Use a Debian-based image with OpenSSL 1.1
                     reuseNode true
                 }
             }
             steps {
+                cleanWs()
                 sh '''
                     ls -la
                     # Print the current working directory
