@@ -53,6 +53,8 @@ pipeline {
                     # Print the npm version
                     npm -v
 
+                    grep -i index.html build/index.html
+
                     # Run tests
                     npm test
                 '''
