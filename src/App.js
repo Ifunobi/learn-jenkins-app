@@ -1,3 +1,4 @@
+import React from 'react'; // Add this line
 import logo from './logo.svg';
 import './App.css';
 
