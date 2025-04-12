@@ -31,6 +31,8 @@ pipeline {
                     npm run build
                 '''
             }
+        } // Close Build stage
+
         stage('Test') {
             agent {
                 docker {
@@ -55,6 +57,6 @@ pipeline {
                     npm test
                 '''
             }
-        }
-    }
-}
+        } // Close Test stage
+    } // Close stages
+} // Close pipeline
