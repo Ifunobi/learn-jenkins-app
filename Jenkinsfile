@@ -34,7 +34,6 @@ pipeline {
         } // Close Build stage
 
         stage('Test') {
-            echo 'Running unit tests...'
             agent {
                 docker {
                     image 'node:23-alpine'
@@ -42,6 +41,7 @@ pipeline {
                 }
             }
             steps {
+                echo 'Running unit tests...'
                 sh '''
                     #!/usr/bin/env bash
                     set -euo pipefail
@@ -63,7 +63,6 @@ pipeline {
         } // Close Test stage
 
         stage('E2E') {
-            echo 'Running end-to-end tests...'
             agent {
                 docker {
                     image 'node:23-alpine'
@@ -71,6 +70,7 @@ pipeline {
                 }
             }
             steps {
+                echo 'Running end-to-end tests...'
                 sh '''
                     #!/usr/bin/env bash
                     set -euo pipefail
