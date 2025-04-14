@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-        /*
         stage('Build') {
             agent {
                 docker {
@@ -33,8 +32,9 @@ pipeline {
                 '''
             }
         } // Close Build stage
-        */
+
         stage('Test') {
+            echo 'Running unit tests...'
             agent {
                 docker {
                     image 'node:23-alpine'
@@ -61,6 +61,26 @@ pipeline {
                 '''
             }
         } // Close Test stage
+
+        stage('E2E') {
+            echo 'Running end-to-end tests...'
+            agent {
+                docker {
+                    image 'node:23-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    #!/usr/bin/env bash
+                    set -euo pipefail
+                    npm install -g serve
+                    npm -s build
+                    npx playwright test
+
+                '''
+            }
+        } // Close E2E stage
     } // Close stages
     post {
         always {
