@@ -75,7 +75,7 @@ pipeline {
 
                     # Install Playwright and its browsers
                     npm install playwright
-                    sudo npx playwright install --with-deps
+                    npx playwright install --with-deps
 
                     # Serve the build directory
                     npm install serve
