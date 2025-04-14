@@ -74,8 +74,8 @@ pipeline {
                 sh '''
                     #!/usr/bin/env bash
                     set -euo pipefail
-                    npm install -g serve
-                    npm -s build
+                    npm install serve
+                    node_modules/.bin/serve -s build
                     npx playwright test
 
                 '''
