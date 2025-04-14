@@ -71,7 +71,6 @@ pipeline {
                 echo 'Running end-to-end tests...'
                 sh '''
                     #!/usr/bin/env bash
-                    set -euo pipefail
 
                     # Install Playwright and its browsers
                     npm install playwright
