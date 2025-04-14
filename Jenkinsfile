@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+        /*
         stage('Build') {
             agent {
                 docker {
@@ -32,7 +33,7 @@ pipeline {
                 '''
             }
         } // Close Build stage
-
+        */
         stage('Test') {
             agent {
                 docker {
@@ -76,8 +77,8 @@ pipeline {
                     set -euo pipefail
 
                     # Install Playwright and its browsers
-                    npm install playwright
                     npx playwright install
+                    npm ls @playwright/test
 
                     # Serve the build directory
                     npm install serve
