@@ -74,12 +74,20 @@ pipeline {
                 sh '''
                     #!/usr/bin/env bash
                     set -euo pipefail
+
+                    # Install Playwright and its browsers
+                    npm install playwright
+                    npx playwright install
+
+                    # Serve the build directory
                     npm install serve
                     node_modules/.bin/serve -s build &
+
                     # Wait for the server to start
                     sleep 5
-                    npx playwright test --reporter=html --output=playwright-report --config=playwright.config.js
 
+                    # Run Playwright tests
+                    npx playwright test --reporter=html --output=playwright-report --config=playwright.config.js
                 '''
             }
         } // Close E2E stage
