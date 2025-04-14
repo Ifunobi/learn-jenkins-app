@@ -2,11 +2,10 @@ pipeline {
     agent any
 
     stages {
-        /*
         stage('Build') {
             agent {
                 docker {
-                    image 'node:23-alpine'
+                    image 'node:23-bullseye'
                     reuseNode true
                 }
             }
@@ -33,11 +32,10 @@ pipeline {
                 '''
             }
         } // Close Build stage
-        */
         stage('Test') {
             agent {
                 docker {
-                    image 'node:23-alpine'
+                    image 'node:23-bullseye'
                     reuseNode true
                 }
             }
@@ -78,7 +76,7 @@ pipeline {
 
                     # Install Playwright and its browsers
                     npm install playwright
-                    npx playwright install --with-deps
+                    sudo npx playwright install --with-deps
 
                     # Serve the build directory
                     npm install serve
