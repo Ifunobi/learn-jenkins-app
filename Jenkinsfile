@@ -75,7 +75,9 @@ pipeline {
                     #!/usr/bin/env bash
                     set -euo pipefail
                     npm install serve
-                    node_modules/.bin/serve -s build
+                    node_modules/.bin/serve -s build &
+                    # Wait for the server to start
+                    sleep 5
                     npx playwright test
 
                 '''
