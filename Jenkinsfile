@@ -61,4 +61,16 @@ pipeline {
             }
         } // Close Test stage
     } // Close stages
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/**/*', fingerprint: true
+            junit 'test-results.xml'
+        }
+        success {
+            echo 'Build and tests completed successfully!'
+        }
+        failure {
+            echo 'Build or tests failed.'
+        }
+    }
 } // Close pipeline
