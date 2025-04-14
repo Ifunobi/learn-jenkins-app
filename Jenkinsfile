@@ -22,7 +22,7 @@ pipeline {
                     # Print the npm version
                     npm -v
                     #!/usr/bin/env bash
-                    set -euo pipefail
+
 
                     # Install dependencies
                     npm install
@@ -43,7 +43,6 @@ pipeline {
                 echo 'Running unit tests...'
                 sh '''
                     #!/usr/bin/env bash
-                    set -euo pipefail
 
                     ls -la
                     # Print the current working directory
