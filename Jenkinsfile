@@ -77,8 +77,8 @@ pipeline {
                     set -euo pipefail
 
                     # Install Playwright and its browsers
-                    npx playwright install
-                    npm ls @playwright/test
+                    npm install playwright
+                    npx playwright install --with-deps
 
                     # Serve the build directory
                     npm install serve
