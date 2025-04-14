@@ -63,7 +63,7 @@ pipeline {
         stage('E2E') {
             agent {
                 docker {
-                    image 'node:23-alpine'
+                    image 'node:23-bullseye'
                     reuseNode true
                 }
             }
