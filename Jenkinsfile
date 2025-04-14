@@ -87,7 +87,7 @@ pipeline {
                     sleep 5
 
                     # Run Playwright tests
-                    npx playwright test --reporter=html --output=playwright-report --config=playwright.config.js
+                    npx playwright test --reporter=html
                 '''
             }
         } // Close E2E stage
